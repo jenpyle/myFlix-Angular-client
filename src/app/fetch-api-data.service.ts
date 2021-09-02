@@ -20,12 +20,6 @@ export class FetchApiDataService {
   //private namespace..is a way of initializing the instance with whatever is given as a parameter. shortcut for constructor(http: HttpClient){this.http = http;}
   constructor(private http: HttpClient) {}
 
-  // Non-typed response extraction
-  private extractResponseData(res: Response): any {
-    const body = res;
-    return body || {};
-  }
-
   //Post new user registration api call
   userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
@@ -111,6 +105,14 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
+  //Post a movie to user's ToWatch list
+  postToWatch(userDetails: any): Observable<any> {
+    console.log(userDetails);
+    return this.http
+      .post(apiUrl + 'users/:Username/movies/towatch/:MovieID', userDetails)
+      .pipe(catchError(this.handleError));
+  }
+
   //Update current user's data (without password input)
   putUserData(userDetails: any): Observable<any> {
     console.log(userDetails);
@@ -135,7 +137,7 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  //Delete a favorite movie to user's favorites list
+  //Delete a favorite movie from user's favorites list
   deleteFavMovie(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -144,6 +146,20 @@ export class FetchApiDataService {
         userDetails
       )
       .pipe(catchError(this.handleError));
+  }
+
+  //Delete a movie from user's Watch list
+  deleteToWatch(userDetails: any): Observable<any> {
+    console.log(userDetails);
+    return this.http
+      .delete(apiUrl + 'users/:Username/movies/towatch/:MovieID', userDetails)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Non-typed response extraction
+  private extractResponseData(res: Response | Object): any {
+    const body = res;
+    return body || {};
   }
 
   private handleError(error: HttpErrorResponse): any {
