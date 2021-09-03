@@ -3,6 +3,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +23,8 @@ export class MovieCardComponent {
   movies: any[] = [];
   constructor(
     public fetchApiData: FetchApiDataService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) {}
 
   //After implementing the function getMovies(), it's then called in the ngOnInit() lifecycle hook
