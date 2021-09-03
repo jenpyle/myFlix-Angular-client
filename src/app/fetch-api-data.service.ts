@@ -159,6 +159,7 @@ export class FetchApiDataService {
   // Non-typed response extraction
   private extractResponseData(res: Response | Object): any {
     const body = res;
+    console.log('HERE0', res);
     return body || {};
   }
 
@@ -167,7 +168,8 @@ export class FetchApiDataService {
       console.error('Some error occurred:', error.error.message);
     } else {
       console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+        `Error Status code ${error.status}, ` +
+          `Error body is: ${error.error.errors[0].msg}`
       );
     }
     return throwError('Something bad happened; please try again later.');
