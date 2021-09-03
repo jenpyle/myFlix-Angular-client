@@ -39,13 +39,10 @@ export class MovieCardComponent {
 
   routeToProfile(): void {
     this.isLoading = true;
-    // const user = localStorage.getItem('user');
-    // this.fetchApiData.getUserData(user).subscribe((resp: any) => {
-    //   this.isLoading = true;
-    //   this.userInfo = resp;
-    //   console.log(this.userInfo);
     this.router.navigate(['profile']);
-    // return this.userInfo;
-    // });
+  }
+  routeToWelcome(): void {
+    this.router.navigate(['welcome']);
+    localStorage.clear();
   }
 }
