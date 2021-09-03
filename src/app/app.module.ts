@@ -23,6 +23,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatProgressSpinnerModule,
     FormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

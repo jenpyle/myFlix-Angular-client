@@ -2,9 +2,20 @@
 <!-- wiring up what you defined in the component’s file (the TypeScript file) with some HTML, with the help of Angular's directives and binding syntax. -->
 <!-- *ngFor directive is being used to display all returned movies, where each movie is displayed in its own card. -->
 <!-- "movies" refers to the movies variable declared in the component file -->
-<mat-card *ngFor="let movie of movies; let i=index;">
-    <mat-dialog-content>
-        <mat-card-title>{{movie.Title}}</mat-card-title>
-        <mat-card-subtitle><img src={{movie.ImagePath}} /></mat-card-subtitle>
-    </mat-dialog-content>
-</mat-card>
+<div class="movies-view">
+    <span>
+        <button mat-raised-button style="margin-right: 10px;" color="primary" (click)="routeToProfile()">
+            User Profile
+        </button>
+        <button mat-raised-button style="margin-right: 10px;" color="primary" (click)="routeToWelcome()">
+            Log out
+        </button>
+    </span>
+
+    <mat-card *ngFor="let movie of movies; let i=index;">
+        <mat-dialog-content (click)="routeToProfile()" matTooltip="Info about the action">
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            <mat-card-subtitle><img src={{movie.ImagePath}} /></mat-card-subtitle>
+        </mat-dialog-content>
+    </mat-card>
+</div>
