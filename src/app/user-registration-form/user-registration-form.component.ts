@@ -42,10 +42,10 @@ export class UserRegistrationFormComponent implements OnInit {
         });
       },
       (result) => {
-        this.isLoading = true;
-        this.snackBar.open(result, 'OK', {
-          duration: 2000,
+        this.snackBar.open(result.error.errors[0].msg, 'OK', {
+          duration: 5000,
         });
+        this.isLoading = false;
       }
     );
   }

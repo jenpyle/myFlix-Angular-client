@@ -34,6 +34,7 @@ export class UserLoginFormComponent implements OnInit {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
         this.isLoading = true;
+
         // Store current user and token in localStorage.
         localStorage.setItem('user', result.user.Username);
         localStorage.setItem('token', result.token);
@@ -46,10 +47,10 @@ export class UserLoginFormComponent implements OnInit {
         this.router.navigate(['movies']);
       },
       (result) => {
-        this.isLoading = true;
-        this.snackBar.open(result, 'OK', {
-          duration: 2000,
+        this.snackBar.open('Incorrect Login credentials', 'OK', {
+          duration: 5000,
         });
+        this.isLoading = false;
       }
     );
   }
