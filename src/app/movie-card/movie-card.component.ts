@@ -3,6 +3,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { SingleMovieViewComponent } from '../single-movie-view/single-movie-view.component';
+
 import {
   MatDialog,
   MatDialogRef,
@@ -15,12 +17,15 @@ import { Router } from '@angular/router';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss'],
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   isLoading = false;
   //This is where the user info returned from the API call will be kept.
   userInfo: any = {};
   //This is where the movies returned from the API call will be kept
-  movies: any[] = [];
+  public movies: any[] = [];
+
+  movie = null;
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
@@ -50,5 +55,12 @@ export class MovieCardComponent {
   routeToWelcome(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();
+  }
+
+  openSingleMovieViewDialog(): void {
+    this.dialog.open(SingleMovieViewComponent, {
+      width: '80%',
+      height: '80%',
+    });
   }
 }
