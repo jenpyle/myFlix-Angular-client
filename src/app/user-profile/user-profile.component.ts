@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
     this.getUser();
   }
 
-  //After implementing the function getMovies(), it's then called in the ngOnInit() lifecycle hook
+  //After implementing the function getUser(), it's then called in the ngOnInit() lifecycle hook
   //ngOnInit() is called when Angular is done creating the component
   getUser(): void {
     this.isLoading = true;
