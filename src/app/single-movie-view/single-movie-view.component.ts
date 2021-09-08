@@ -21,7 +21,5 @@ export class SingleMovieViewComponent implements OnInit {
     }
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.movie.Title);
-  }
+  ngOnInit(): void {}
 }
