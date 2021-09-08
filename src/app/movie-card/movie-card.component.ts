@@ -57,10 +57,13 @@ export class MovieCardComponent implements OnInit {
     localStorage.clear();
   }
 
-  openSingleMovieViewDialog(): void {
+  openSingleMovieViewDialog(Title: string): void {
     this.dialog.open(SingleMovieViewComponent, {
       width: '80%',
       height: '80%',
+      data: {
+        Title,
+      },
     });
   }
 }
