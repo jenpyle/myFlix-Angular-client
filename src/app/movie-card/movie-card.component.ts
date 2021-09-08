@@ -56,13 +56,35 @@ export class MovieCardComponent implements OnInit {
     this.router.navigate(['welcome']);
     localStorage.clear();
   }
-
-  openSingleMovieViewDialog(Title: string): void {
+  //m: object[]
+  // Director: Array<N: string, B: string, Bio: string>,
+  openSingleMovieViewDialog(
+    Title: string,
+    Actors: any[],
+    Description: string,
+    // Director: object[],
+    Director: Array<any>,
+    Genre: object[],
+    ImagePath: string,
+    Rated: string,
+    Released: string,
+    Runtime: string,
+    Year: string
+  ): void {
     this.dialog.open(SingleMovieViewComponent, {
       width: '80%',
       height: '80%',
       data: {
         Title,
+        Actors,
+        Description,
+        Director,
+        Genre,
+        ImagePath,
+        Rated,
+        Released,
+        Runtime,
+        Year,
       },
     });
   }

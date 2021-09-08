@@ -1,0 +1,25 @@
+.movie-info {
+  width: 100%;
+  padding: 0;
+  //   padding: 2rem;
+  img {
+    flex-shrink: 3;
+  }
+  h1 {
+    font-weight: 400;
+  }
+}
+
+.movie-info__container {
+  display: inline-flex;
+  //   justify-content: space-between;
+}
+
+.movie-info__container__right p:first-child {
+  //   font-weight: bold;
+  font-size: large;
+}
+
+.span {
+  display: inline !important;
+}

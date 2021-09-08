@@ -12,15 +12,17 @@
         </button>
     </span>
 
-    <mat-card *ngFor="let movie of movies; let i=index;">
-        <mat-dialog-content (click)="openSingleMovieViewDialog(movie.Title)" matTooltip="Info about the action">
-            <mat-card-title>{{movie.Title}}</mat-card-title>
+    <mat-card *ngFor="let m of movies; let i=index;">
+        <mat-dialog-content
+            (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)"
+            matTooltip="Info about the action">
+            <mat-card-title>{{m.Title}}</mat-card-title>
             <!-- open child component SingleMovieView -->
             <!-- <button mat-button (click)="openSingleMovieViewDialog()">More info</button> -->
             <!-- this works correctly to display the movie title, but I want to open a dialog with the button^^ -->
             <!-- <app-single-movie-view [movie]="movie"></app-single-movie-view> -->
 
-            <mat-card-subtitle><img src={{movie.ImagePath}} class="moviesImage"
+            <mat-card-subtitle><img src={{m.ImagePath}} class="moviesImage"
                     onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'" />
             </mat-card-subtitle>
         </mat-dialog-content>
