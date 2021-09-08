@@ -1,3 +1,37 @@
-.moviesImage {
-  height: 25rem;
+* {
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  background-color: #e288f9;
+  background-image: linear-gradient(315deg, #e288f9 0%, #ffc988 74%);
+}
+.nav {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  .nav__left {
+    font-size: 6.5rem;
+    -webkit-text-stroke: 0.15rem white; /* width and color */
+    font-family: sans;
+    color: gray;
+    padding: 2rem;
+  }
+}
+
+.movies-view {
+  display: flex;
+  height: auto;
+  align-items: center;
+
+  img {
+    height: 25rem;
+  }
+
+  mat-card-actions.mat-card-actions {
+    display: inline-flex;
+  }
 }

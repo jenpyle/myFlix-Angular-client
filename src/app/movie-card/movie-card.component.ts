@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { SingleMovieViewComponent } from '../single-movie-view/single-movie-view.component';
-
+import { MatIconModule } from '@angular/material/icon';
 import {
   MatDialog,
   MatDialogRef,

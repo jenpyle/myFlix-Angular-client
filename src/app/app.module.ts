@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 //importing from angular material
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     FormsModule,
     MatTableModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
