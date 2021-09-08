@@ -11,6 +11,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { GenreComponent } from '../genre/genre.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -55,6 +56,20 @@ export class MovieCardComponent implements OnInit {
   routeToWelcome(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();
+  }
+  // routeToGenre(): void {
+  //   this.isLoading = true;
+  //   this.router.navigate(['genre']);
+  // }
+  openGenreDialog(Name: string, Description: string): void {
+    this.dialog.open(GenreComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {
+        Name,
+        Description,
+      },
+    });
   }
   //m: object[]
   // Director: Array<N: string, B: string, Bio: string>,

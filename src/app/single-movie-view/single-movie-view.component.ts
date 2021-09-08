@@ -1,6 +1,7 @@
 // src/app/user-registration-form/user-registration-form.component.ts
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-single-movie-view',

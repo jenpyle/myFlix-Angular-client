@@ -23,12 +23,19 @@
 }
 
 .movies-view {
+  // padding-top: 5rem;
   display: flex;
   height: auto;
   align-items: center;
-
+  // .mat-card {
+  //   height: 40rem;
+  // }
   img {
     height: 25rem;
+    // height: 75%;
+    // width: 100%;
+    // justify-content: center;
+    padding-left: 2rem;
   }
 
   mat-card-actions.mat-card-actions {

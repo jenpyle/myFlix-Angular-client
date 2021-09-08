@@ -26,11 +26,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { SingleMovieViewComponent } from './single-movie-view/single-movie-view.component';
+import { GenreComponent } from './genre/genre.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
   { path: 'profile', component: UserProfileComponent },
+  { path: 'genre', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     SingleMovieViewComponent,
+    GenreComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
