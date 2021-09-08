@@ -33,10 +33,12 @@
                 <button mat-button color="primary" (click)="openGenreDialog(m.Genre.Name, m.Genre.Description)">
                     {{m.Genre.Name}}
                 </button>
-                <button mat-button color="primary">
+                <button mat-button color="primary"
+                    (click)="openDirectorDialog(m.Director.Name, m.Director.Birth, m.Director.Bio)">
                     {{m.Director.Name}}
                 </button>
-                <button mat-button color="primary">
+                <button mat-button color="primary"
+                    (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)">
                     Synopsis
                 </button>
 

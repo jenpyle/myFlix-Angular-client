@@ -12,6 +12,7 @@ import {
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GenreComponent } from '../genre/genre.component';
+import { DirectorComponent } from '../director/director.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -71,6 +72,19 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
+
+  openDirectorDialog(Name: string, Birth: string, Bio: string): void {
+    this.dialog.open(DirectorComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {
+        Name,
+        Birth,
+        Bio,
+      },
+    });
+  }
+
   //m: object[]
   // Director: Array<N: string, B: string, Bio: string>,
   openSingleMovieViewDialog(

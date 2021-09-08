@@ -27,6 +27,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { SingleMovieViewComponent } from './single-movie-view/single-movie-view.component';
 import { GenreComponent } from './genre/genre.component';
+import { DirectorComponent } from './director/director.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     UserProfileComponent,
     SingleMovieViewComponent,
     GenreComponent,
+    DirectorComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
