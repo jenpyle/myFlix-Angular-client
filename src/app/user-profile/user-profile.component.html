@@ -2,38 +2,48 @@
 <!-- wiring up what you defined in the component’s file (the TypeScript file) with some HTML, with the help of Angular's directives and binding syntax. -->
 <!-- *ngFor directive is being used to display all returned movies, where each movie is displayed in its own card. -->
 <!-- "movies" refers to the movies variable declared in the component file -->
-<div class="movies-view">
-
-
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>{{userInfo.Username}}'s User info</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-card-title>Username {{userInfo.Username}}</mat-card-title>
-            <br>
-            <mat-card-title>Email {{userInfo.Email}}</mat-card-title>
-            <br>
-            <mat-card-title>Birthday {{userInfo.Birthday}}</mat-card-title>
-            <br>
-            <mat-card-title>Favorite Movies:</mat-card-title>
-            {{userInfo.FavoriteMovies}}<br>
-            <!-- <div *ngFor="let item of items">{{item.label}}</div> -->
-            <mat-card-title>Movies To Watch:</mat-card-title>
-            {{userInfo.ToWatch}}<br>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button style="margin-right: 10px;" color="primary"
-                (click)="openEditUserDialog(userInfo.Username, userInfo.Email, userInfo.Birthday)">
-                Edit Profile Info
-            </button>
+<div class="main">
+    <div class="nav">
+        <div class="nav__left">myFlix</div>
+        <div class="nav__right">
             <button mat-raised-button style="margin-right: 10px;" color="secondary" (click)="goBack()">
                 Back
             </button>
-        </mat-card-actions>
-    </mat-card>
+            <button mat-raised-button style="margin-right: 10px;" color="primary" (click)="routeToWelcome()">
+                Log out
+            </button>
+        </div>
+    </div>
+    <div class="profile-view">
+        <div class="profile-view__title">{{userInfo.Username}}'s User info</div>
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title class="profile-view__details">Username:</mat-card-title>
+                <div class="value">{{userInfo.Username}}</div>
 
+                <mat-card-title class="profile-view__details">Email:</mat-card-title>
+                <div class="value">{{userInfo.Email}}</div>
 
-
-
+                <mat-card-title class="profile-view__details">Birthday:</mat-card-title>
+                <div class="value">{{userInfo.Birthday}}</div>
+                <mat-card-title class="profile-view__details">Favorite Movies:</mat-card-title>
+                <div class="value">{{userInfo.FavoriteMovies}}</div>
+                <!-- <div *ngFor="let item of items">{{item.label}}</div> -->
+                <mat-card-title class="profile-view__details">Movies To Watch:</mat-card-title>
+                <div class="value">{{userInfo.ToWatch}}</div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button style="margin-right: 10px;" color="secondary" (click)="goBack()">
+                    Back To Movies
+                </button>
+                <button mat-raised-button style="margin-right: 10px;" color="primary"
+                    (click)="openEditUserDialog(userInfo.Username, userInfo.Email, userInfo.Birthday)">
+                    Edit Profile Info
+                </button>
+                <button mat-raised-button style="margin-right: 10px;" color="warn" (click)="openDeleteUserDialog()">
+                    Delete Profile
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
 </div>

@@ -106,13 +106,43 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
 
     console.log(movieID);
+    return this.http.post(
+      apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      }
+    );
+  }
+
+  postFavMovie2(movieID: any): Observable<any> {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    console.log(movieID);
     return this.http
       .post(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
+  }
+
+  //Post new user registration api call
+  postFavMovie3(movieID: any): Observable<any> {
+    console.log(movieID);
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    //Using this.http, it posts it to the API endpoint and returns the API's response.
+    //The pipe() function takes the functions you want to combine (catchError) as its args and return a new function that runs the composed functions in sequence.
+    return this.http
+      .post(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(catchError(this.handleError));
   }
 
   //Update current user's data (without password input)
@@ -121,7 +151,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     console.log(userDetails);
     return this.http
-      .put(apiUrl + 'users/' + user, userDetails, {
+      .put(apiUrl + 'users/' + user + '/password', userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -138,10 +168,15 @@ export class FetchApiDataService {
   }
 
   //Update current user's data (WITH password input)
-  deleteUser(userDetails: any): Observable<any> {
-    console.log(userDetails);
+  deleteUser(user: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    console.log(user);
     return this.http
-      .delete(apiUrl + 'users/:Username', userDetails)
+      .delete(apiUrl + 'users/' + user, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
       .pipe(catchError(this.handleError));
   }
 

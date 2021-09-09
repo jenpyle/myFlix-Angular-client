@@ -51,7 +51,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   addToFav(movieID: string): void {
-    this.fetchApiData.postFavMovie(movieID).subscribe((resp: any) => {
+    this.fetchApiData.postFavMovie3(movieID).subscribe((resp: any) => {
       this.userInfo = resp;
       console.log(this.userInfo);
       return this.userInfo;

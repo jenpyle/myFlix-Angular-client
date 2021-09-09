@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { EditUserComponent } from '../edit-user/edit-user.component';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -37,6 +38,20 @@ export class UserProfileComponent implements OnInit {
       return this.userInfo;
     });
   }
+
+  deleteUser(): void {
+    this.isLoading = true;
+    const user = localStorage.getItem('user');
+    this.fetchApiData.deleteUser(user).subscribe((resp: any) => {
+      this.isLoading = true;
+      this.userInfo = resp;
+      console.log(this.userInfo);
+      // this.router.navigate(['profile']);
+      return this.userInfo;
+    });
+    this.routeToWelcome();
+  }
+
   openEditUserDialog(Name: string, Email: string, Birthday: string): void {
     this.dialog.open(EditUserComponent, {
       width: 'auto',
@@ -47,6 +62,18 @@ export class UserProfileComponent implements OnInit {
         Birthday,
       },
     });
+  }
+
+  openDeleteUserDialog(): void {
+    this.dialog.open(DeleteUserComponent, {
+      width: 'auto',
+      height: 'auto',
+    });
+  }
+
+  routeToWelcome(): void {
+    this.router.navigate(['welcome']);
+    localStorage.clear();
   }
 
   goBack(): void {

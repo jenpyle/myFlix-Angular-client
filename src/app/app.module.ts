@@ -29,6 +29,7 @@ import { SingleMovieViewComponent } from './single-movie-view/single-movie-view.
 import { GenreComponent } from './genre/genre.component';
 import { DirectorComponent } from './director/director.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     GenreComponent,
     DirectorComponent,
     EditUserComponent,
+    DeleteUserComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

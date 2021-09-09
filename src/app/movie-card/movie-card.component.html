@@ -37,8 +37,7 @@
                     (click)="openDirectorDialog(m.Director.Name, m.Director.Birth, m.Director.Bio)">
                     {{m.Director.Name}}
                 </button>
-                <button mat-button color="primary"
-                    (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)">
+                <button mat-button color="primary" (click)="addToFav(m._id)">
                     Synopsis
                 </button>
 
