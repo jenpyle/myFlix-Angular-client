@@ -101,29 +101,31 @@ export class FetchApiDataService {
   }
 
   //Post a favorite movie to user's favorites list
-  postFavMovie(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http
-      .post(
-        apiUrl + 'users/:Username/movies/favoritemovies/:MovieID',
-        userDetails
-      )
-      .pipe(catchError(this.handleError));
-  }
+  postFavMovie(movieID: string): Observable<any> {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
-  //Post a movie to user's ToWatch list
-  postToWatch(userDetails: any): Observable<any> {
-    console.log(userDetails);
+    console.log(movieID);
     return this.http
-      .post(apiUrl + 'users/:Username/movies/towatch/:MovieID', userDetails)
-      .pipe(catchError(this.handleError));
+      .post(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   //Update current user's data (without password input)
   putUserData(userDetails: any): Observable<any> {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     console.log(userDetails);
     return this.http
-      .put(apiUrl + 'users/:Username', userDetails)
+      .put(apiUrl + 'users/' + user, userDetails, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
       .pipe(catchError(this.handleError));
   }
 
@@ -144,21 +146,16 @@ export class FetchApiDataService {
   }
 
   //Delete a favorite movie from user's favorites list
-  deleteFavMovie(userDetails: any): Observable<any> {
-    console.log(userDetails);
+  deleteFavMovie(movieID: string): Observable<any> {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    console.log(movieID);
     return this.http
-      .delete(
-        apiUrl + 'users/:Username/movies/favoritemovies/:MovieID',
-        userDetails
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  //Delete a movie from user's Watch list
-  deleteToWatch(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http
-      .delete(apiUrl + 'users/:Username/movies/towatch/:MovieID', userDetails)
+      .delete(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
       .pipe(catchError(this.handleError));
   }
 

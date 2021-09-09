@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SingleMovieViewComponent } from './single-movie-view/single-movie-view.component';
 import { GenreComponent } from './genre/genre.component';
 import { DirectorComponent } from './director/director.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     SingleMovieViewComponent,
     GenreComponent,
     DirectorComponent,
+    EditUserComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

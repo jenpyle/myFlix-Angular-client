@@ -50,6 +50,22 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  addToFav(movieID: string): void {
+    this.fetchApiData.postFavMovie(movieID).subscribe((resp: any) => {
+      this.userInfo = resp;
+      console.log(this.userInfo);
+      return this.userInfo;
+    });
+  }
+
+  RemoveFav(movieID: string): void {
+    this.fetchApiData.deleteFavMovie(movieID).subscribe((resp: any) => {
+      this.userInfo = resp;
+      console.log(this.userInfo);
+      return this.userInfo;
+    });
+  }
+
   routeToProfile(): void {
     this.isLoading = true;
     this.router.navigate(['profile']);
@@ -58,10 +74,7 @@ export class MovieCardComponent implements OnInit {
     this.router.navigate(['welcome']);
     localStorage.clear();
   }
-  // routeToGenre(): void {
-  //   this.isLoading = true;
-  //   this.router.navigate(['genre']);
-  // }
+
   openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(GenreComponent, {
       width: 'auto',
@@ -84,7 +97,6 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
-
   //m: object[]
   // Director: Array<N: string, B: string, Bio: string>,
   openSingleMovieViewDialog(

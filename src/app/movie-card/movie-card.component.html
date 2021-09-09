@@ -19,7 +19,7 @@
         <mat-card *ngFor="let m of movies;" style="flex: 1 1 auto;">
             <mat-card-header>
                 <mat-card-title>{{m.Title}}</mat-card-title>
-                <mat-icon>favorite_border</mat-icon>
+                <mat-icon (click)="addToFav(m._id)">favorite_border</mat-icon>
                 <mat-card-subtitle>Directed by: {{m.Director.Name}}</mat-card-subtitle>
             </mat-card-header>
             <img src={{m.ImagePath}} alt={{m.Title}}
