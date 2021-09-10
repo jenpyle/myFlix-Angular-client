@@ -8,7 +8,6 @@
   background-color: #e288f9;
   background-image: linear-gradient(315deg, #e288f9 0%, #ffc988 74%);
 }
-
 .nav {
   display: inline-flex;
   align-items: center;
@@ -77,7 +76,6 @@
       }
     }
   }
-
   .profile-view {
     padding: 0;
     margin: 0;
@@ -85,7 +83,7 @@
       margin: auto;
       .profile-view__title {
         display: flex;
-        font-size: 2.5rem;
+        font-size: 2rem;
         padding-bottom: 1rem;
       }
       .profile-view__details {
@@ -103,8 +101,3 @@
     }
   }
 }
-// .profile-view[_ngcontent-wtf-c122]   .mat-card[_ngcontent-wtf-c122]   .mat-card-actions[_ngcontent-wtf-c122] {
-//   display: flex;
-//   justify-content: space-between;
-//   text-align: center;
-// }

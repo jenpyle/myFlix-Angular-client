@@ -38,7 +38,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  mat-card {
+  .mat-card {
     flex: 0 0 auto;
     img {
       height: 25rem;
@@ -67,7 +67,7 @@
       }
     }
   }
-  mat-card {
+  .mat-card {
     flex: 1 1 auto;
     padding: 2rem 0;
   }

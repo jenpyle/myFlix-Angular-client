@@ -104,7 +104,6 @@ export class FetchApiDataService {
   postFavMovie(movieID: string): Observable<any> {
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
     console.log(movieID);
     return this.http.post(
       apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID,
@@ -114,35 +113,6 @@ export class FetchApiDataService {
         }),
       }
     );
-  }
-
-  postFavMovie2(movieID: any): Observable<any> {
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    console.log(movieID);
-    return this.http
-      .post(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(catchError(this.handleError));
-  }
-
-  //Post new user registration api call
-  postFavMovie3(movieID: any): Observable<any> {
-    console.log(movieID);
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    //Using this.http, it posts it to the API endpoint and returns the API's response.
-    //The pipe() function takes the functions you want to combine (catchError) as its args and return a new function that runs the composed functions in sequence.
-    return this.http
-      .post(apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(catchError(this.handleError));
   }
 
   //Update current user's data (without password input)
@@ -202,12 +172,14 @@ export class FetchApiDataService {
   }
 
   private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
-    } else {
+    let message;
+    try {
+      message = error.error.errors[0].msg;
+    } catch {
+      message = error.error;
+    } finally {
       console.error(
-        `Error Status code ${error.status}, ` +
-          `Error body is: ${error.error.errors[0].msg}`
+        `Error Status code ${error.status}, ` + `Error body is: ${message}`
       );
     }
     return throwError(error);
