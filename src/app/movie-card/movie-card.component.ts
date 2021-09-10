@@ -97,13 +97,11 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
-  //m: object[]
-  // Director: Array<N: string, B: string, Bio: string>,
+
   openSingleMovieViewDialog(
     Title: string,
     Actors: any[],
     Description: string,
-    // Director: object[],
     Director: Array<any>,
     Genre: object[],
     ImagePath: string,
