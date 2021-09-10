@@ -14,8 +14,7 @@
             </button>
         </div>
     </div>
-    <div class="movies-view">
-
+    <div class="movies-view horizontal-scroll-wrapper squares">
         <mat-card *ngFor="let m of movies;" style="flex: 1 1 auto;">
             <mat-card-header>
                 <mat-card-title>{{m.Title}}</mat-card-title>
@@ -26,10 +25,7 @@
                 (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)"
                 onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'"
                 matTooltip="Click to view" />
-
             <mat-card-actions>
-                <!-- <mat-icon>favorite_border</mat-icon>
-                <br> -->
                 <button mat-button color="primary" (click)="openGenreDialog(m.Genre.Name, m.Genre.Description)">
                     {{m.Genre.Name}}
                 </button>
@@ -37,10 +33,10 @@
                     (click)="openDirectorDialog(m.Director.Name, m.Director.Birth, m.Director.Bio)">
                     {{m.Director.Name}}
                 </button>
-                <button mat-button color="primary" (click)="addToFav(m._id)">
+                <button mat-button color="primary"
+                    (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)">
                     Synopsis
                 </button>
-
             </mat-card-actions>
         </mat-card>
     </div>

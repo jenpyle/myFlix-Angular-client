@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  padding: 0.5rem;
 }
 
 .main {
@@ -9,36 +8,67 @@
   background-color: #e288f9;
   background-image: linear-gradient(315deg, #e288f9 0%, #ffc988 74%);
 }
+
 .nav {
   display: inline-flex;
   align-items: center;
   width: 100%;
+  margin-bottom: 1rem;
   .nav__left {
+    width: 50%;
     font-size: 6.5rem;
     -webkit-text-stroke: 0.15rem white; /* width and color */
     font-family: sans;
     color: gray;
     padding: 2rem;
   }
+  .nav__right {
+    width: 50%;
+    button {
+      width: 40%;
+    }
+  }
 }
 
 .movies-view {
-  // padding-top: 5rem;
   display: flex;
   height: auto;
   align-items: center;
-  // .mat-card {
-  //   height: 40rem;
-  // }
-  img {
-    height: 25rem;
-    // height: 75%;
-    // width: 100%;
-    // justify-content: center;
-    padding-left: 2rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  mat-card {
+    flex: 0 0 auto;
+    img {
+      height: 25rem;
+      padding-left: 2rem;
+    }
+    mat-card-actions.mat-card-actions {
+      display: inline-flex;
+    }
   }
+}
 
-  mat-card-actions.mat-card-actions {
-    display: inline-flex;
+@media screen and (max-width: 800px) {
+  * {
+    padding: 0;
+  }
+  .nav {
+    .nav__left {
+      width: unset;
+      font-size: 4.5rem;
+    }
+    .nav__right {
+      margin-right: 1rem;
+      button {
+        margin-top: 0.5rem;
+        width: 100%;
+      }
+    }
+  }
+  mat-card {
+    flex: 1 1 auto;
+    padding: 2rem 0;
   }
 }

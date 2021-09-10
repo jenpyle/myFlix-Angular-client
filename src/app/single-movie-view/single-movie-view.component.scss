@@ -1,7 +1,6 @@
 .movie-info {
   width: 100%;
   padding: 0;
-  //   padding: 2rem;
   img {
     flex-shrink: 3;
   }
@@ -12,14 +11,28 @@
 
 .movie-info__container {
   display: inline-flex;
-  //   justify-content: space-between;
+  padding: 0.5rem;
+  .movie-info__container__left {
+    img {
+      height: 25rem;
+    }
+  }
+  .movie-info__container__right p:first-child {
+    font-size: x-large;
+  }
+  .span {
+    display: inline !important;
+  }
+  button {
+    width: 100%;
+  }
 }
 
-.movie-info__container__right p:first-child {
-  //   font-weight: bold;
-  font-size: large;
-}
-
-.span {
-  display: inline !important;
+@media screen and (max-width: 800px) {
+  .movie-info__container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
