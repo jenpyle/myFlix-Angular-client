@@ -1,10 +1,10 @@
 // Angular is built primarily out of components (component files), each of which
 // has a "template." The template (i.e., the .component.html file) is rendered by the component
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 //Component decorator to tell Angular that the class right below is a component
 @Component({

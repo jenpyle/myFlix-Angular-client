@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
-import { Router } from '@angular/router';
-import { EditUserComponent } from '../edit-user/edit-user.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -24,6 +23,9 @@ export class DeleteUserComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Deletes user and redirects to Welcome page
+   */
   deleteUser(): void {
     this.isLoading = true;
     const user = localStorage.getItem('user');

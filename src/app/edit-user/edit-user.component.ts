@@ -1,12 +1,7 @@
-// src/app/user-registration-form/user-registration-form.component.ts
-import { Component, OnInit, Input } from '@angular/core';
-// You'll use this import to close the dialog on success
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-// This import brings in the API calls we created in 6.2
-import { FetchApiDataService } from '../fetch-api-data.service';
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -15,7 +10,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class EditUserComponent implements OnInit {
   isLoading = false;
-  //Input decorator to define the component's input
+  /**
+   * Input decorator to define the component's input
+   */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
@@ -26,14 +23,16 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  //userData object will be passed into the API call in the registerUser function
+  /**
+   * Updates userData object and closes dialog
+   * in the HTML, thengModel directive binds the inputs to the userData object
+   */
   updateUser(): void {
     this.isLoading = true;
     this.fetchApiData.putUserData(this.userData).subscribe(
       (result) => {
         console.log('hello1', result);
         this.isLoading = true;
-        // Logic for a successful user registration goes here! (To be implemented)
         this.dialogRef.close(); // This will close the modal on success!
         localStorage.setItem('user', result.Username);
         window.location.reload();

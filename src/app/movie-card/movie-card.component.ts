@@ -1,18 +1,10 @@
-// Angular is built primarily out of components (component files), each of which
-// has a "template." The template (i.e., the .component.html file) is rendered by the component
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
-import { UserProfileComponent } from '../user-profile/user-profile.component';
-import { SingleMovieViewComponent } from '../single-movie-view/single-movie-view.component';
-import { MatIconModule } from '@angular/material/icon';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
+import { FetchApiDataService } from '../fetch-api-data.service';
+import { GenreComponent } from '../genre/genre.component';
+import { SingleMovieViewComponent } from '../single-movie-view/single-movie-view.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -40,8 +32,10 @@ export class MovieCardComponent implements OnInit {
     this.getMovies();
   }
 
-  //A function, getMovies(), is then implemented and used to fetch the movies
-  //from the FetchApiDataService service with the help of getAllMovies()
+  /**
+   * Used to get the movies from the
+   * FetchApiDataService service with the help of getAllMovies()
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -50,6 +44,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Used to add a movie to the User's favorite list
+   * @param movieID
+   */
   addToFav(movieID: string): void {
     this.fetchApiData.postFavMovie(movieID).subscribe((resp: any) => {
       this.userInfo = resp;
@@ -58,6 +56,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Used to remove a movie from the User's favorite list
+   * @param movieID
+   */
   RemoveFav(movieID: string): void {
     this.fetchApiData.deleteFavMovie(movieID).subscribe((resp: any) => {
       this.userInfo = resp;
@@ -70,11 +72,16 @@ export class MovieCardComponent implements OnInit {
     this.isLoading = true;
     this.router.navigate(['profile']);
   }
+
   routeToWelcome(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();
   }
-
+  /**
+   * Used to open the Genre dialog
+   * @param Name
+   * @param Description
+   */
   openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(GenreComponent, {
       width: 'auto',
@@ -86,6 +93,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Used to open the Director dialog
+   * @param Name
+   * @param Birth
+   * @param Bio
+   */
   openDirectorDialog(Name: string, Birth: string, Bio: string): void {
     this.dialog.open(DirectorComponent, {
       width: 'auto',
@@ -98,6 +111,19 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param Title
+   * @param Actors
+   * @param Description
+   * @param Director
+   * @param Genre
+   * @param ImagePath
+   * @param Rated
+   * @param Released
+   * @param Runtime
+   * @param Year
+   */
   openSingleMovieViewDialog(
     Title: string,
     Actors: any[],

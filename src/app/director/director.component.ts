@@ -1,7 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-director',
@@ -10,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class DirectorComponent implements OnInit {
   isLoading = false;
-  //This is where the user info returned from the API call will be kept.
-  // genre: any = {};
-  // director = null;
 
   constructor(
+    /**
+     * Uses Inject to get director details from the movie object
+     * from movie-card component
+     */
     @Inject(MAT_DIALOG_DATA)
     public director: {
       Name: string;

@@ -4,7 +4,6 @@
                 <img src={{movie.ImagePath}}
                     onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'" />
                 <button mat-button mat-dialog-close>close</button>
-
             </div>
             <div class=movie-info__container__right>
                 <p>{{movie.Description}}</p>
@@ -23,46 +22,4 @@
                 <h1>Actors: </h1>
                 <p>{{movie.Actors}}</p>
             </div>
-
         </div>
-
-
-
-
-
-
-
-        <!-- 
-<mat-card class=movie-info>
-    <mat-card-header>
-        <mat-card-title>{{movie.Title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class=movie-info__container>
-        <div class=movie-info__container__left>
-            <img src={{movie.ImagePath}} class="moviesImage"
-                onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'" />
-        </div>
-        <div class=movie-info__container__right>
-            <p>{{movie.Description}}</p>
-            <br>
-            <h1 class="span">Rated: </h1>
-            <p class="span">{{movie.Rated}}</p>
-            <br>
-            <h1 class="span">Released: </h1>
-            <p class="span">{{movie.Released}}</p>
-            <br>
-            <h1 class="span">Runtime: </h1>
-            <p class="span">{{movie.Runtime}}</p>
-            <br>
-            <h1 class="span">Year: </h1>
-            <p class="span">{{movie.Year}}</p>
-            <h1>Actors: </h1>
-            <p>{{movie.Actors}}</p>
-
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <button>Here</button>
-    </mat-card-actions>
-
-</mat-card> -->

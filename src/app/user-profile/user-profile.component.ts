@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
-import { Router } from '@angular/router';
-import { EditUserComponent } from '../edit-user/edit-user.component';
-import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-user-profile',
