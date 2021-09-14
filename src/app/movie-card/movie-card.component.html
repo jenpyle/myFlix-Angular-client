@@ -1,0 +1,42 @@
+<!-- wiring up what you defined in the component’s file (the TypeScript file) with some HTML, with the help of Angular's directives and binding syntax. -->
+<div class="main">
+    <div class="nav">
+        <div class="nav__left">myFlix</div>
+        <div class="nav__right">
+            <button mat-raised-button style="margin-right: 10px;" color="primary" (click)="routeToProfile()">
+                User Profile
+            </button>
+            <button mat-raised-button style="margin-right: 10px;" color="secondary" (click)="routeToWelcome()">
+                Log out
+            </button>
+        </div>
+    </div>
+    <div class="movies-view horizontal-scroll-wrapper squares">
+        <!-- "movies" refers to the movies variable declared in the component file -->
+        <!-- *ngFor directive is being used to display all returned movies, where each movie is displayed in its own card. -->
+        <mat-card *ngFor="let m of movies;" style="flex: 1 1 auto;">
+            <mat-card-header>
+                <mat-card-title>{{m.Title}}</mat-card-title>
+                <mat-icon (click)="addToFav(m._id)">favorite_border</mat-icon>
+                <mat-card-subtitle>Directed by: {{m.Director.Name}}</mat-card-subtitle>
+            </mat-card-header>
+            <img src={{m.ImagePath}} alt={{m.Title}}
+                (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)"
+                onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'"
+                matTooltip="Click to view" />
+            <mat-card-actions>
+                <button mat-button color="primary" (click)="openGenreDialog(m.Genre.Name, m.Genre.Description)">
+                    {{m.Genre.Name}}
+                </button>
+                <button mat-button color="primary"
+                    (click)="openDirectorDialog(m.Director.Name, m.Director.Birth, m.Director.Bio)">
+                    {{m.Director.Name}}
+                </button>
+                <button mat-button color="primary"
+                    (click)="openSingleMovieViewDialog(m.Title, m.Actors, m.Description, m.Director, m.Genre, m.ImagePath, m.Rated, m.Released, m.Runtime, m.Year)">
+                    Synopsis
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

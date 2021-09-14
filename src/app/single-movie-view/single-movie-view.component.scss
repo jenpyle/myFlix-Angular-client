@@ -1,0 +1,39 @@
+.movie-info {
+  width: 100%;
+  padding: 0;
+  img {
+    flex-shrink: 3;
+  }
+  h1 {
+    font-weight: 400;
+  }
+}
+
+.movie-info__container {
+  display: inline-flex;
+  padding: 0.5rem;
+  .movie-info__container__left {
+    img {
+      height: 25rem;
+      margin-right: 2rem;
+    }
+  }
+  .movie-info__container__right p:first-child {
+    font-size: x-large;
+  }
+  .span {
+    display: inline !important;
+  }
+  button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .movie-info__container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

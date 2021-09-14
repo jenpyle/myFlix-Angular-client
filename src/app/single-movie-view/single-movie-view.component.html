@@ -1,0 +1,25 @@
+<h1 mat-dialog-title class="span">{{movie.Title}}<h1>
+        <div mat-dialog-content class=movie-info__container>
+            <div class=movie-info__container__left>
+                <img src={{movie.ImagePath}}
+                    onerror="this.src='https://via.placeholder.com/100x150/FFC0CB/000000?text=Image_URL_Broken'" />
+                <button mat-button mat-dialog-close>close</button>
+            </div>
+            <div class=movie-info__container__right>
+                <p>{{movie.Description}}</p>
+                <br>
+                <h1 class="span">Rated: </h1>
+                <p class="span">{{movie.Rated}}</p>
+                <br>
+                <h1 class="span">Released: </h1>
+                <p class="span">{{movie.Released}}</p>
+                <br>
+                <h1 class="span">Runtime: </h1>
+                <p class="span">{{movie.Runtime}}</p>
+                <br>
+                <h1 class="span">Year: </h1>
+                <p class="span">{{movie.Year}}</p>
+                <h1>Actors: </h1>
+                <p>{{movie.Actors}}</p>
+            </div>
+        </div>
