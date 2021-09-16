@@ -5,6 +5,7 @@ import { DirectorComponent } from '../director/director.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreComponent } from '../genre/genre.component';
 import { SingleMovieViewComponent } from '../single-movie-view/single-movie-view.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -19,17 +20,20 @@ export class MovieCardComponent implements OnInit {
   public movies: any[] = [];
 
   movie = null;
+  favs: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) {}
 
   //After implementing the function getMovies(), it's then called in the ngOnInit() lifecycle hook
   //ngOnInit() is called when Angular is done creating the component
   ngOnInit(): void {
     this.getMovies();
+    this.getUsersFavs();
   }
 
   /**
@@ -48,24 +52,64 @@ export class MovieCardComponent implements OnInit {
    * Used to add a movie to the User's favorite list
    * @param movieID
    */
-  addToFav(movieID: string): void {
+  addToFav(movieID: string, title: string): void {
     this.fetchApiData.postFavMovie(movieID).subscribe((resp: any) => {
       this.userInfo = resp;
-      console.log('MOVIEID', this.userInfo);
-      return this.userInfo;
+      this.snackBar.open(`${title} has been added to your favorites.`, 'OK', {
+        duration: 3000,
+      });
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
     });
+    return this.getUsersFavs();
   }
 
   /**
    * Used to remove a movie from the User's favorite list
    * @param movieID
    */
-  RemoveFav(movieID: string): void {
+  removeFav(movieID: string, title: string): void {
     this.fetchApiData.deleteFavMovie(movieID).subscribe((resp: any) => {
       this.userInfo = resp;
-      console.log(this.userInfo);
-      return this.userInfo;
+      this.snackBar.open(
+        `${title} has been removed from your favorites.`,
+        'OK',
+        {
+          duration: 3000,
+        }
+      );
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
     });
+    return this.getUsersFavs();
+  }
+
+  /**
+   * gets the users favorite movies
+   */
+  getUsersFavs(): void {
+    let name = localStorage.getItem('user');
+    this.fetchApiData.getUserData(name).subscribe((resp: any) => {
+      console.log('nn', resp);
+      this.favs = resp.FavoriteMovies;
+      console.log(this.favs, 'favs');
+      return this.favs;
+    });
+  }
+
+  /**
+   * Compares movie id's with getUsersFavs returned list to display the favorite movie icon (heart) correctly
+   * @param id
+   * @returns
+   */
+  setFavStatus(id: any): any {
+    if (this.favs.includes(id)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   routeToProfile(): void {
