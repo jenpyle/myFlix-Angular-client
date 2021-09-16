@@ -13,7 +13,6 @@
     </div>
     <div class="movies-view horizontal-scroll-wrapper squares">
         <!-- "movies" refers to the movies variable declared in the component file -->
-        <!-- *ngFor directive is being used to display all returned movies, where each movie is displayed in its own card. -->
         <mat-card *ngFor="let m of movies;" style="flex: 1 1 auto;">
             <mat-card-header>
                 <mat-card-title>{{m.Title}}</mat-card-title>
