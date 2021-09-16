@@ -13,11 +13,15 @@
     </div>
     <div class="movies-view horizontal-scroll-wrapper squares">
         <!-- "movies" refers to the movies variable declared in the component file -->
-        <!-- *ngFor directive is being used to display all returned movies, where each movie is displayed in its own card. -->
         <mat-card *ngFor="let m of movies;" style="flex: 1 1 auto;">
             <mat-card-header>
                 <mat-card-title>{{m.Title}}</mat-card-title>
-                <mat-icon (click)="addToFav(m._id)">favorite_border</mat-icon>
+                <mat-icon *ngIf="setFavStatus(m._id)" (click)="removeFav(m._id, m.Title)" class="favorite-button">
+                    favorite</mat-icon>
+                <mat-icon *ngIf="!setFavStatus(m._id)" (click)="addToFav(m._id, m.Title)"
+                    class="favorite-button-active">
+                    favorite_border</mat-icon>
+
                 <mat-card-subtitle>Directed by: {{m.Director.Name}}</mat-card-subtitle>
             </mat-card-header>
             <img src={{m.ImagePath}} alt={{m.Title}}

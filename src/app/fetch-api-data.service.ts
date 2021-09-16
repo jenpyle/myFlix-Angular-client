@@ -135,6 +135,7 @@ export class FetchApiDataService {
     console.log(movieID);
     return this.http.post(
       apiUrl + 'users/' + user + '/movies/favoritemovies/' + movieID,
+      null,
       {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,

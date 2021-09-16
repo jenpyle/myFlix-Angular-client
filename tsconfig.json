@@ -16,15 +16,28 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "src/app/app.module.ts",
+      "src/app/delete-user/delete-user.component.ts",
+      "src/app/director/director.component.ts",
+      "src/app/edit-user/edit-user.component.ts",
+      "src/app/genre/genre.component.ts",
+      "src/app/movie-card/movie-card.component.ts",
+      "src/app/single-movie-view/single-movie-view.component.ts",
+      "src/app/user-login-form/user-login-form.component.ts",
+      "src/app/user-profile/user-profile.component.ts",
+      "src/app/user-registration-form/user-registration-form.component.ts",
+      "src/app/welcome-page/welcome-page.component.ts"
+    ],
+    "out": "docs"
   }
 }

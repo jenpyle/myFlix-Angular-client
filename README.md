@@ -2,6 +2,25 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
+> Version 2 (using Angular instead of React) to build the client-side for a Movie App based on its [existing server-side code](https://github.com/jenpyle/myFlix-server) (REST API and database), with supporting documentation. See ReactJS version [here](https://github.com/jenpyle/myFlix-client)
+
+This web application provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies. [View live app](https://jenpyle.github.io/myFlix-Angular-client/welcome)
+<p align="center">
+  <img src=/my-flix-angular.PNG />
+</p>
+
+### Install Dependencies
+
+```
+npm install
+```
+
+### Run
+
+```
+ng serve
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
